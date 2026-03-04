@@ -1,6 +1,4 @@
-export const revalidate = 60
 'use client'
-
 import { useMemo } from 'react'
 import { Mail, Phone, MessageCircle } from 'lucide-react'
 
