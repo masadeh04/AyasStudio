@@ -50,35 +50,37 @@ export default function GalleryClient({ artworks }: { artworks: Artwork[] }) {
 
   return (
     <>
-      {/* ── Filters ─────────────────────────────────────────────────── */}
-      <div className="mb-10 flex flex-wrap items-center gap-3">
-        {/* Status pills */}
-        {(['All', 'Available', 'Sold', 'Commissioned'] as const).map((s) => (
-          <button
-            key={s}
-            onClick={() => setStatus(s)}
-            className="text-xs tracking-widest uppercase px-4 py-2 transition-all"
-            style={{
-              letterSpacing: '0.12em',
-              background:    status === s ? 'var(--foreground)' : 'transparent',
-              color:         status === s ? 'var(--background)' : 'var(--muted)',
-              border:        `1px solid ${status === s ? 'var(--foreground)' : 'var(--border)'}`,
-            }}
-          >
-            {s}
-          </button>
-        ))}
-        {/* Count */}
-        <span
-          className="ml-auto text-xs tracking-widest uppercase"
-          style={{ color: 'var(--muted)', letterSpacing: '0.12em' }}
-        >
-          {filtered.length} {filtered.length === 1 ? 'work' : 'works'}
-        </span>
-      </div>
+{/* ── Filters ─────────────────────────────────────────────────── */}
+<div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-3">
+  {/* Status pills (scrollable on mobile) */}
+  <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 sm:overflow-visible sm:pb-0 sm:mx-0 sm:px-0">
+    {(['All', 'Available', 'Sold', 'Commissioned'] as const).map((s) => (
+      <button
+        key={s}
+        onClick={() => setStatus(s)}
+        className="shrink-0 text-xs tracking-widest uppercase px-4 py-2 transition-all"
+        style={{
+          letterSpacing: '0.12em',
+          background: status === s ? 'var(--foreground)' : 'transparent',
+          color: status === s ? 'var(--background)' : 'var(--muted)',
+          border: `1px solid ${status === s ? 'var(--foreground)' : 'var(--border)'}`,
+        }}
+      >
+        {s}
+      </button>
+    ))}
+  </div>
 
+  {/* Count */}
+  <span
+    className="text-xs tracking-widest uppercase sm:ml-auto"
+    style={{ color: 'var(--muted)', letterSpacing: '0.12em' }}
+  >
+    {filtered.length} {filtered.length === 1 ? 'work' : 'works'}
+  </span>
+</div>
       {/* ── Grid ────────────────────────────────────────────────────── */}
-      <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+     <div className="grid gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((a) => {
           const img    = a.images
           const imgUrl = img ? urlFor(img).width(800).height(900).fit('crop').url() : null
@@ -87,7 +89,7 @@ export default function GalleryClient({ artworks }: { artworks: Artwork[] }) {
             <article key={a._id} className="group">
               {/* Image block — clickable for modal */}
               <button
-                className="relative block w-full cursor-pointer overflow-hidden"
+                className="relative block w-full cursor-pointer overflow-hidden active:scale-[0.99] transition-transform"
                 style={{
                   aspectRatio: '4/5',
                   background: '#ede9e3',
@@ -147,7 +149,7 @@ export default function GalleryClient({ artworks }: { artworks: Artwork[] }) {
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p
-                      className="text-sm font-light"
+                      className="text-base sm:text-sm font-light"
                       style={{ color: 'var(--foreground)', lineHeight: 1.4 }}
                     >
                       {a.title}

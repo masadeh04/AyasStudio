@@ -59,7 +59,7 @@ export default function ContactPage() {
           <div className="mt-auto pt-8">
            <a
   href={mailHref}
-  className="block border py-3 text-center text-xs tracking-widest uppercase transition-opacity hover:opacity-60"
+  className="block border py-4 text-center text-xs tracking-widest uppercase transition-opacity hover:opacity-60"
   style={{
     pointerEvents: CONTACT_EMAIL ? 'auto' : 'none',
     opacity: CONTACT_EMAIL ? 1 : 0.55
@@ -86,7 +86,7 @@ export default function ContactPage() {
           <div className="mt-auto pt-8">
             <a
               href={callHref}
-              className="block border py-3 text-center text-xs tracking-widest uppercase transition-opacity hover:opacity-60"
+              className="block border py-4 text-center text-xs tracking-widest uppercase transition-opacity hover:opacity-60"
               style={{
                 borderColor: 'var(--foreground)',
                 color: 'var(--foreground)',
@@ -118,7 +118,7 @@ export default function ContactPage() {
               href={textHref}
               target="_blank"
               rel="noreferrer"
-              className="block border py-3 text-center text-xs tracking-widest uppercase transition-opacity hover:opacity-60"
+              className="block border py-4 text-center text-xs tracking-widest uppercase transition-opacity hover:opacity-60"
               style={{
                 borderColor: 'var(--foreground)',
                 color: 'var(--foreground)',
