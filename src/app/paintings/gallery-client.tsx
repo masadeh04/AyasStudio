@@ -68,28 +68,6 @@ export default function GalleryClient({ artworks }: { artworks: Artwork[] }) {
             {s}
           </button>
         ))}
-
-        {/* Divider */}
-        <div className="h-5 w-px mx-1" style={{ background: 'var(--border)' }} />
-
-        {/* Tag select */}
-        <select
-          className="text-xs tracking-widest uppercase px-4 py-2 bg-transparent"
-          style={{
-            letterSpacing: '0.12em',
-            border: '1px solid var(--border)',
-            color: tag === 'All' ? 'var(--muted)' : 'var(--foreground)',
-            appearance: 'none',
-            paddingRight: '2rem',
-          }}
-          value={tag}
-          onChange={(e) => setTag(e.target.value)}
-        >
-          {allTags.map((t) => (
-            <option key={t} value={t}>{t}</option>
-          ))}
-        </select>
-
         {/* Count */}
         <span
           className="ml-auto text-xs tracking-widest uppercase"
