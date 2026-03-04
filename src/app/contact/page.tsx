@@ -1,3 +1,4 @@
+export const revalidate = 60
 'use client'
 
 import { useMemo } from 'react'
